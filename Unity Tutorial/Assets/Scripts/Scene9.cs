@@ -64,6 +64,7 @@ public class Scene9 : MonoBehaviour
         anim.SetBool("Move", isMove);
         anim.SetFloat("DirX", direction.x);
         anim.SetFloat("DirZ", direction.z);
+
         if (isJump)
         {
             if (rigid.velocity.y <= -0.1 && !isFall)
@@ -71,7 +72,9 @@ public class Scene9 : MonoBehaviour
                 isFall = true;
                 anim.SetTrigger("fall");
             }
+
             RaycastHit hitInfo;
+
             if (Physics.Raycast(transform.position, -transform.up, out hitInfo, col.bounds.extents.y + 0.1f, layerMask))
             {
                 anim.SetTrigger("land");
